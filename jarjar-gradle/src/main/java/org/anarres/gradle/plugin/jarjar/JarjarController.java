@@ -54,7 +54,7 @@ public class JarjarController extends GroovyObjectSupport {
         jarjar.setDestinationName(name);
         return jarjar.getOutputs().getFiles().filter(new Spec<File>(){
             @Override
-            boolean isSatisfiedBy​(File file){
+            public boolean isSatisfiedBy​(File file){
                 return !file.getName().equals("jarjar");
             }
         });
