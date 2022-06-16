@@ -49,7 +49,7 @@ public class JarjarController extends GroovyObjectSupport {
             jarjar = project.getTasks().create("jarjar-repackage_" + name, JarjarTask.class, new ClosureBackedAction<JarjarTask>(c));
         }
         jarjar.setDestinationName(name);
-        return jarjar.getOutputs().getFiles();
+        return jarjar.getOutputs().getFiles().filter(f -> ~f.getName().equals("jarjar"));
     }
 
     @Nonnull
