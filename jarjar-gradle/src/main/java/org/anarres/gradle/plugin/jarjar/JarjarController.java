@@ -6,6 +6,7 @@
 package org.anarres.gradle.plugin.jarjar;
 
 import groovy.lang.Closure;
+import org.gradle.api.specs.Spec;
 import groovy.lang.GroovyObjectSupport;
 import javax.annotation.Nonnull;
 import org.gradle.api.Project;
@@ -13,6 +14,8 @@ import org.gradle.api.artifacts.Dependency;
 import org.gradle.api.file.FileCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
 
 /**
  * This object appears as 'jarjar' in the project extensions.
@@ -49,7 +52,12 @@ public class JarjarController extends GroovyObjectSupport {
             jarjar = project.getTasks().create("jarjar-repackage_" + name, JarjarTask.class, new ClosureBackedAction<JarjarTask>(c));
         }
         jarjar.setDestinationName(name);
-        return jarjar.getOutputs().getFiles().filter(f -> ~f.getName().equals("jarjar"));
+        return jarjar.getOutputs().getFiles().filter(new Spec<File>(){
+            @Override
+            boolean isSatisfiedBy​(File file){
+                return !file.getName().equals("jarjar");
+            }
+        });
     }
 
     @Nonnull
