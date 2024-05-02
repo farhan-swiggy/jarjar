@@ -11,6 +11,7 @@ jobs:
       - name: Run pull request stats
         uses: flowwer-dev/pull-request-stats@master
         with:
+          token: ${{ secrets.PR_STATS_ACCESS_TOKEN }}
           period: 60
           sortBy: 'REVIEWS'
           exclude: sos-core-user
