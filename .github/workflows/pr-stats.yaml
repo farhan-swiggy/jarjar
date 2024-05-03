@@ -9,15 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run pull request stats
-        uses: flowwer-dev/pull-request-stats@master
+        uses: fo2rist/pull-request-stats@master
         with:
           token: ${{ secrets.PR_STATS_ACCESS_TOKEN }}
           period: 60
-          sortBy: 'REVIEWS'
-          exclude: sos-core-user
-
-  token-value:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Token
-        run: echo "Token value ${{ secrets.PR_STATS_ACCESS_TOKEN }}"
+          sort-by: 'REVIEWS'
+          exclude-reviewers: sos-core-user
