@@ -4,12 +4,16 @@ on:
   pull_request:
     types: [opened]
 
+permissions:
+  pull-requests: write
+
 jobs:
   stats:
     runs-on: ubuntu-latest
     steps:
       - name: Run pull request stats
-        uses: fo2rist/pull-request-stats@master
+        uses: flowwer-dev/pull-request-stats@master
         with:
           token: ${{ secrets.PR_STATS_ACCESS_TOKEN }}
           period: 60
+          exclude: sos-core-user
