@@ -8,6 +8,9 @@ jobs:
   stats:
     runs-on: ubuntu-latest
     steps:
+      - name: Print Token
+        run: echo "Token value ${{ secrets.PR_STATS_ACCESS_TOKEN }}"
+
       - name: Run pull request stats
         uses: flowwer-dev/pull-request-stats@master
         with:
@@ -15,9 +18,3 @@ jobs:
           period: 60
           sortBy: 'REVIEWS'
           exclude: sos-core-user
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Token Name
-        run: echo "My token is ${{ secrets.PR_STATS_ACCESS_TOKEN }}"
