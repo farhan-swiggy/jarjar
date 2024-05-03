@@ -13,4 +13,4 @@ jobs:
         with:
           token: ${{ secrets.PR_STATS_ACCESS_TOKEN }}
           period: 60
-          exclude-reviewers: 'sos-core-user'
+          exclude-reviewers: '["sos-core-user"]'
