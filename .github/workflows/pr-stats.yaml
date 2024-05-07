@@ -1,7 +1,8 @@
 name: Pull Request Stats
 
-on: [push]
-
+on:
+  pull_request:
+    types: [opened]
 
 jobs:
   stats:
@@ -10,5 +11,6 @@ jobs:
       - name: Run pull request stats
         uses: flowwer-dev/pull-request-stats@master
         with:
+          token: ${{ secrets.PR_STATS_TOKEN }}
           period: 60
           exclude: sos-core-user
