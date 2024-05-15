@@ -1,0 +1,16 @@
+name: Pull Request Stats
+
+on: [push]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run pull request stats
+        uses: flowwer-dev/pull-request-stats@master
+        with:
+          period: 60
+          exclude: sos-core-user
